@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Aplicativo</string>
+    <string name="nav_principal">Aplicativo</string>
+    <string name="nav_preferencias">Aplicativo</string>
+        <string name="nome_usuario">Aplicativo</string>
+
+</resources>
