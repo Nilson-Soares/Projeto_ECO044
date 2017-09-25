@@ -2,18 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryback"
     android:padding="16dp"
     android:gravity="bottom"
-    android:orientation="vertical">
+    android:weightSum="1">
+
     <ImageView
         android:id="@+id/imageView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@android:drawable/sym_def_app_icon" />
+        android:layout_width="146dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="-32dp"
+        android:padding="0dp"
+        android:src="@drawable/ztd_maior" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_width="130dp"
+        android:layout_height="43dp"
+        android:layout_margin="25px"
         android:paddingTop="16dp"
-        android:text="@string/nome_usuario" />
+        android:text="@string/nome_usuario"
+        android:layout_weight="0.46" />
+
 </LinearLayout>
