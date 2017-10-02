@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_personalizado);
             exibirFragmentPrincipal();
 
+
         }
     }
 
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_personalizado:
                 exibirFragmentPersonalizado();
                 break;
+            case R.id.nav_feitas:
+                exibirFragmentFeitas();
+                break;
         }
         return true;
     }
@@ -66,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     private void exibirFragmentPersonalizado() {
         Fragment novoFragment = PersonalizadoFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_main_conteudo, novoFragment)
+                .commit();
+    }
+    private void exibirFragmentFeitas() {
+        Fragment novoFragment = FeitasFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.activity_main_conteudo, novoFragment)
                 .commit();

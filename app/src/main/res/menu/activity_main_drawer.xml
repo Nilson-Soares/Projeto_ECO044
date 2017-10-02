@@ -9,5 +9,9 @@
             android:id="@+id/nav_personalizado"
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/nav_personalizado" />
+        <item
+            android:id="@+id/nav_feitas"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/nav_feitas" />
     </group>
 </menu>
