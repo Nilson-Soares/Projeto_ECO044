@@ -6,8 +6,8 @@
             android:icon="@android:drawable/ic_menu_agenda"
             android:title="@string/nav_principal" />
         <item
-            android:id="@+id/nav_preferencias"
+            android:id="@+id/nav_personalizado"
             android:icon="@android:drawable/ic_menu_preferences"
-            android:title="@string/nav_preferencias" />
+            android:title="@string/nav_personalizado" />
     </group>
 </menu>
