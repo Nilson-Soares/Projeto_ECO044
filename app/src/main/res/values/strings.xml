@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Zen to Done</string>
+    <string name="nav_principal">Principal</string>
+    <string name="nav_personalizado">Personalizado</string>
+    <string name="nome_usuario">ECO044</string>
+    <string name="navigation_drawer_open">Abre</string>
+    <string name="navigation_drawer_close">Fecha</string>
+    <string name="Todas">Todas</string>
+    <string name="Urgentes">Urgentes</string>
+    <string name="Normais">Normais</string>
+    <string name="Personalizado1">Personalizado 1</string>
+    <string name="Personalizado2">Personalizado 2</string>
+    <string name="Personalizado3">Personalizado 3</string>
+    <string name="nav_feitas">Atividades Feitas</string>
+    <string name="nav_feitas1">Atividades Feitas</string>
+</resources>
