@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class PopUp extends DialogFragment {
 
-    private EditText editText;
+    private EditText editTextTitulo;
 
     public PopUp() {
 
@@ -46,12 +46,12 @@ public class PopUp extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Get field from view
-        editText = (EditText) view.findViewById(R.id.edit_text_popup);
+        editTextTitulo = (EditText) view.findViewById(R.id.edit_text_title);
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
         // Show soft keyboard automatically and request focus to field
-        editText.requestFocus();
+        editTextTitulo.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }

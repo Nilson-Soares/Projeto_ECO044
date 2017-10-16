@@ -1,16 +1,38 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/edit_name"
     android:layout_width="match_parent" android:layout_height="match_parent" >
     <!-- ...subviews here... -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="133dp">
+
         <EditText
-            android:id="@+id/edit_text_popup"
+            android:id="@+id/edit_text_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/text_view_titulo"
             android:inputType="text|textCapSentences"
-            android:maxLines="1"
-            android:hint="@string/text_view1"/>
+            android:maxLines="1" />
+
     </android.support.design.widget.TextInputLayout>
-</LinearLayout>
+
+    <Button
+        android:id="@+id/button_salvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/botao_salvar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/button_adicionar_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/botao_cancelar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
