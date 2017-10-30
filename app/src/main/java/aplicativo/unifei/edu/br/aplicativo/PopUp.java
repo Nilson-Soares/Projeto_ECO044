@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class PopUp extends DialogFragment {
 
-    private EditText editTextTitulo;
+    private EditText editText;
+    private String Nome, Descri;
 
     public PopUp() {
 
@@ -45,14 +47,32 @@ public class PopUp extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Button cancel;
+        cancel = (Button)view.findViewById(R.id.button_adicionar_cancelar);
+        Button salvar;
+        salvar = (Button) view.findViewById(R.id.button_salvar);
         // Get field from view
-        editTextTitulo = (EditText) view.findViewById(R.id.edit_text_title);
+        editText = (EditText) view.findViewById(R.id.edit_text_popup_nome);
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
         // Show soft keyboard automatically and request focus to field
-        editTextTitulo.requestFocus();
-        getDialog().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        editText.requestFocus();
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dismiss();
+                }
+        });
+
+        salvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Nome = editText.getText().toString();
+                dismiss();
+            }
+        });
     }
 }
