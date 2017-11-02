@@ -1,17 +1,11 @@
 package aplicativo.unifei.edu.br.aplicativo;
 
-/**
- * Created by Aluno on 30/10/2017.
- */
-
 public class Tarefa {
     private String nome;
     private String descricao;
 
-    public  Tarefa()
-    {
+    public Tarefa(){ }
 
-    }
     public Tarefa(String nome, String descricao)
     {
         this.nome = nome;

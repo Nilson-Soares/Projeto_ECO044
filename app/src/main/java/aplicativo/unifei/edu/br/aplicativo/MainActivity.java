@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Override
@@ -44,24 +47,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (savedInstanceState == null) {
             navigationView.setCheckedItem(R.id.nav_principal);
             exibirFragmentPrincipal();
-
-        } if (savedInstanceState == null) {
-            navigationView.setCheckedItem(R.id.nav_personalizado);
-            exibirFragmentPrincipal();
-
-
         }
     }
-
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Trate os eventos de navegação aqui
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
-
 
         switch (item.getItemId()) {
             case R.id.nav_principal:
@@ -94,12 +86,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .replace(R.id.activity_main_conteudo, novoFragment)
                 .commit();
     }
-
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
-        PopUp popUp = PopUp.newInstance("Some Title");
+        PopUp popUp = PopUp.newInstance();
         popUp.show(fm, "fragment_edit_name");
     }
-
-
 }

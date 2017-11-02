@@ -14,6 +14,7 @@
     <string name="nav_feitas">Atividades Feitas</string>
     <string name="nav_feitas1">Atividades Feitas</string>
     <string name="text_view1">Nome da Atividade</string>
+    <string name="text_view2">Descrição da Atividade</string>
     <string name="popup">Novo Lembrete</string>
     <string name="botao_salvar">Confirmar</string>
     <string name="botao_cancelar">Cancelar</string>

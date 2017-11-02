@@ -5,18 +5,16 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <!-- incluiremos aqui o layout com toolbar no futuro -->
+    <!-- inclusão da toolbar -->
     <include
         layout="@layout/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ztd"
         />
-
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

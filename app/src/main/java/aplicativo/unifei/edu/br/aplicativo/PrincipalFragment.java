@@ -33,7 +33,6 @@ public class PrincipalFragment extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 // TODO: criar e exibir o fragmento selecionado
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) { }
 

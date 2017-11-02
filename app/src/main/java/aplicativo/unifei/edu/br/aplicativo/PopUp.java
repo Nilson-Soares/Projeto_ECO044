@@ -12,21 +12,16 @@ import android.widget.EditText;
 
 public class PopUp extends DialogFragment {
 
-    private EditText editText;
-    private String Nome, Descri;
+    private EditText editTextNome;
+    private EditText editTextDescricao;
+    private String Nome, Descricao;
 
-    public PopUp() {
+    public PopUp() { }
 
+    public static PopUp newInstance() {
+        PopUp popUp = new PopUp();
+        return popUp;
     }
-
-    public static PopUp newInstance(String title) {
-        PopUp frag = new PopUp();
-        Bundle args = new Bundle();
-        args.putString("title", title);
-        frag.setArguments(args);
-        return frag;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,18 +42,21 @@ public class PopUp extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         Button cancel;
-        cancel = (Button)view.findViewById(R.id.button_adicionar_cancelar);
+        cancel = (Button)view.findViewById(R.id.button_cancelar);
+
         Button salvar;
         salvar = (Button) view.findViewById(R.id.button_salvar);
+
         // Get field from view
-        editText = (EditText) view.findViewById(R.id.edit_text_popup_nome);
-        // Fetch arguments from bundle and set title
-        String title = getArguments().getString("title", "Enter Name");
-        getDialog().setTitle(title);
+        editTextNome = (EditText) view.findViewById(R.id.edit_text_popup_nome);
+        // Get field from view
+        editTextDescricao = (EditText) view.findViewById(R.id.edit_ext_popup_descricao);
+
         // Show soft keyboard automatically and request focus to field
-        editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        editTextNome.requestFocus();
 
         cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,7 +68,8 @@ public class PopUp extends DialogFragment {
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Nome = editText.getText().toString();
+                Nome = editTextNome.getText().toString();
+                Descricao = editTextDescricao.getText().toString();
                 dismiss();
             }
         });
