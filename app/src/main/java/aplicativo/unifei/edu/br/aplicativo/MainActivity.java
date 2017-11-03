@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,6 +23,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
+        Tarefa tarefa= new Tarefa("Nome1", "Descricao1");
+        tarefas.add(tarefa);
+        tarefa = new Tarefa("Nome2", "Descricao2");
+        tarefas.add(tarefa);
+        ListView itemsListView  = (ListView)findViewById(R.id.list_view_items);
+        //create adapter object
+        MyArrayAdapter adapter = new MyArrayAdapter(this, tarefas);
+        //set custom adapter as adapter to our list view
+        itemsListView.setAdapter(adapter);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

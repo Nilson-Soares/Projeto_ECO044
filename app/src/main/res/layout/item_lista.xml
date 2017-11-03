@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/descricao_tarefa"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/nome_tarefa"
+        android:layout_x="46dp"
+        android:layout_y="42dp"
+        android:padding="8dp"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/descricao_tarefa"
+        android:layout_weight="0.04"
+        android:layout_x="7dp"
+        android:layout_y="8dp" />
+
+    <TextView
+        android:id="@+id/nome_tarefa"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_x="45dp"
+        android:layout_y="5dp"
+        android:padding="8dp"
+        android:textSize="16sp" />
+
+</AbsoluteLayout>
