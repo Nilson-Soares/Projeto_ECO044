@@ -18,4 +18,13 @@
     <string name="popup">Novo Lembrete</string>
     <string name="botao_salvar">Confirmar</string>
     <string name="botao_cancelar">Cancelar</string>
+    <string name="chk_box_baixa">Baixa</string>
+    <string name="chk_box_normal">Normal</string>
+    <string name="chk_box_urgente">Urgente</string>
+    <string name="txt_Prioridade">Prioridade</string>
+    <string-array name="Prioridades">
+        <item>Baixa</item>
+        <item>Normal</item>
+        <item>Urgente</item>
+    </string-array>
 </resources>

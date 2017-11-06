@@ -71,4 +71,22 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="800px"
+        android:layout_height="80px"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textInputLayout2"
+        android:layout_marginTop="15dp"
+        android:text="@string/txt_Prioridade"
+        android:textAlignment="center"
+        android:textSize="60px" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button_salvar"
+        android:layout_below="@+id/textView2" />
+
 </RelativeLayout>
