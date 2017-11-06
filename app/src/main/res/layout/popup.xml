@@ -83,10 +83,11 @@
         android:textSize="60px" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/button_salvar"
         android:layout_below="@+id/textView2" />
 
 </RelativeLayout>
+
