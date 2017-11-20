@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- ...subviews here... -->
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarpop"
         android:layout_width="match_parent"
@@ -89,25 +90,25 @@
         android:layout_alignEnd="@+id/button_salvar"
         android:layout_below="@+id/textView2" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="150px"
+    <Button
+        android:id="@+id/buttonData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Data"
+        android:layout_alignBaseline="@+id/buttonHora"
+        android:layout_alignBottom="@+id/buttonHora"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner"
-        android:layout_marginStart="84dp"
-        android:ems="10"
-        android:inputType="time" />
+        android:layout_marginStart="54dp" />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="230px"
+    <Button
+        android:id="@+id/buttonHora"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/spinner"
-        android:layout_marginEnd="45dp"
-        android:ems="10"
-        android:inputType="date" />
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="21dp"
+        android:text="Hora" />
 
 </RelativeLayout>
 
