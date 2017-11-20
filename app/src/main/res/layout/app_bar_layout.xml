@@ -30,17 +30,12 @@
         app:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_add_fab" />
     <!-- aqui será inserido nossos fragments do menu -->
-    <ListView
-        android:id="@+id/list_view_items"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:scrollbars="none" />
 
     <FrameLayout
         android:id="@+id/activity_main_conteudo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -18,6 +18,7 @@ public class PopUp extends DialogFragment {
     private EditText editTextNome;
     private EditText editTextDescricao;
     private String Nome, Descricao;
+    private Button cancel, salvar;
 
     public PopUp() { }
 
@@ -46,15 +47,14 @@ public class PopUp extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button cancel;
+        //Botão cancelar;
         cancel = (Button)view.findViewById(R.id.button_cancelar);
-
-        Button salvar;
+        //Botão salvar
         salvar = (Button) view.findViewById(R.id.button_salvar);
 
-        // Get field from view
+        // Nome da tarefa
         editTextNome = (EditText) view.findViewById(R.id.edit_text_popup_nome);
-        // Get field from view
+        // Descrição da tarefa
         editTextDescricao = (EditText) view.findViewById(R.id.edit_ext_popup_descricao);
 
         // Show soft keyboard automatically and request focus to field

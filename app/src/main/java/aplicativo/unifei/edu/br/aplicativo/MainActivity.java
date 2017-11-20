@@ -13,91 +13,108 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private ListView itemsListView;
+    private MyArrayAdapter adapter;
+    private NavigationView navigationView;
+    private  Toolbar toolbar;
+    private  FloatingActionButton fab;
+    private  DrawerLayout drawer;
+    private  ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
+        //verifica se o apricativo possui configurações salvas
+        if (savedInstanceState == null) {
+            //navigationView.setCheckedItem(R.id.nav_principal);
+            exibirFragmentPrincipal();
+        }
+        /*ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
         Tarefa tarefa= new Tarefa("Nome1", "Descricao1");
         tarefas.add(tarefa);
         tarefa = new Tarefa("Nome2", "Descricao2");
         tarefas.add(tarefa);
-        ListView itemsListView  = (ListView)findViewById(R.id.list_view_items);
-        //create adapter object
-        MyArrayAdapter adapter = new MyArrayAdapter(this, tarefas);
-        //set custom adapter as adapter to our list view
-        itemsListView.setAdapter(adapter);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //criação da lista
+        itemsListView = (ListView) findViewById(R.id.list_view_items);
+        //cria um objeto adapter para o ArrayList
+        adapter = new MyArrayAdapter(this, tarefas);
+        //configura o adapter para a ListView
+        itemsListView.setAdapter(adapter);*/
+
+        //cria o NavigationView
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //configura o Listener para os itens da NavigationView
         navigationView.setNavigationItemSelectedListener(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //cria a Toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //adiciona support
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener(){
-           @Override
-           public void onClick(View v) {
-               showEditDialog();
+        //instancia o botão flutuante
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        //adiciona o Listener ao botão flutuante
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEditDialog();
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //instancia o DrawerLayout
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //instancia a ActionBar
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Listener para ActionBar
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        if (savedInstanceState == null) {
-            navigationView.setCheckedItem(R.id.nav_principal);
-            exibirFragmentPrincipal();
-        }
     }
+    //implementa a interface do Listener para a NavigationView
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Trate os eventos de navegação aqui
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //configura a posição do drawer
         drawer.closeDrawer(GravityCompat.START);
-
+        //verifica qual item selecionado no drawer
         switch (item.getItemId()) {
             case R.id.nav_principal:
-                exibirFragmentPrincipal();
+                exibirFragmentPrincipal();//exibe o fragment Principal
                 break;
             case R.id.nav_personalizado:
-                exibirFragmentPersonalizado();
+                exibirFragmentPersonalizado();//exibe o fragment Personalizado
                 break;
             case R.id.nav_feitas:
-                exibirFragmentFeitas();
+                exibirFragmentFeitas();//exibe o fragment Feitas
                 break;
         }
         return true;
     }
+    //método responsável por exibir o fragment principal
     private void exibirFragmentPrincipal() {
         Fragment novoFragment = PrincipalFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_main_conteudo, novoFragment)
-                .commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_conteudo, novoFragment).commit();
     }
+    //metodo responsável por exibir o fragment personalizado
     private void exibirFragmentPersonalizado() {
         Fragment novoFragment = PersonalizadoFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.activity_main_conteudo, novoFragment)
                 .commit();
     }
+    //método responsável por exibir o fragment feita
     private void exibirFragmentFeitas() {
         Fragment novoFragment = FeitasFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.activity_main_conteudo, novoFragment)
                 .commit();
     }
+    //método responsável por exibir o popup
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
         PopUp popUp = PopUp.newInstance();
