@@ -34,19 +34,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //navigationView.setCheckedItem(R.id.nav_principal);
             exibirFragmentPrincipal();
         }
-        /*ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
-        Tarefa tarefa= new Tarefa("Nome1", "Descricao1");
-        tarefas.add(tarefa);
-        tarefa = new Tarefa("Nome2", "Descricao2");
-        tarefas.add(tarefa);
-
-        //criação da lista
-        itemsListView = (ListView) findViewById(R.id.list_view_items);
-        //cria um objeto adapter para o ArrayList
-        adapter = new MyArrayAdapter(this, tarefas);
-        //configura o adapter para a ListView
-        itemsListView.setAdapter(adapter);*/
-
         //cria o NavigationView
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         //configura o Listener para os itens da NavigationView

@@ -24,9 +24,7 @@ import java.util.Calendar;
 public class PopUp extends DialogFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private EditText editTextNome;
-    private EditText editTextDescricao;
-    //private EditText data;
-    //private EditText hora;
+    private EditText editTextDescricao;;
     private DatePickerDialog calendario;
     private TimePickerDialog horario;
     private Button data;
@@ -79,20 +77,19 @@ public class PopUp extends DialogFragment implements DatePickerDialog.OnDateSetL
         // Get field from view
         editTextDescricao = (EditText) view.findViewById(R.id.edit_ext_popup_descricao);
 
-        //editTextDescricao = (EditText) view.findViewById(R.id.editTextData);
-
-        //editTextDescricao = (EditText) view.findViewById(R.id.editTextHora);
-
         // Show soft keyboard automatically and request focus to field
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         editTextNome.requestFocus();
 
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.Prioridades, android.R.layout.simple_spinner_item);
+
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 

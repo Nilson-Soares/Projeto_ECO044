@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Custom list adapter, implementing BaseAdapter
- */
 public class MyArrayAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Tarefa> tarefas;
