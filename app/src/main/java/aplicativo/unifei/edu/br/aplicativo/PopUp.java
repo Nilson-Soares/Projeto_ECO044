@@ -2,6 +2,7 @@ package aplicativo.unifei.edu.br.aplicativo;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -11,10 +12,12 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -29,6 +32,7 @@ public class PopUp extends DialogFragment implements DatePickerDialog.OnDateSetL
     private Button data;
     private Button hora;
     private String Nome, Descricao;
+    private boolean checked;
 
     public PopUp() { }
 
@@ -117,8 +121,14 @@ public class PopUp extends DialogFragment implements DatePickerDialog.OnDateSetL
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                BancoController crud = new BancoController(getContext());
                 Nome = editTextNome.getText().toString();
                 Descricao = editTextDescricao.getText().toString();
+                String resultado;
+
+                resultado = crud.insereDado(Nome,Descricao);
+
+                Toast.makeText(getContext(), resultado, Toast.LENGTH_LONG).show();
                 dismiss();
             }
         });
@@ -127,22 +137,26 @@ public class PopUp extends DialogFragment implements DatePickerDialog.OnDateSetL
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         // store the values selected into a Calendar instance
-        String dataTarefa;
+        String dataTarefa = "";
         final Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, monthOfYear);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        dataTarefa = c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH)+1) + "/" + c.get(Calendar.YEAR);
+        dataTarefa = ((c.get(Calendar.DAY_OF_MONTH) > 10)?(c.get(Calendar.DAY_OF_MONTH)):("0" + c.get(Calendar.DAY_OF_MONTH))) + "/" + ((c.get(Calendar.MONTH)+1) > 10?(c.get(Calendar.MONTH)+1):("0" + (c.get(Calendar.MONTH)+1)) + "/" + c.get(Calendar.YEAR));
         data.setText(dataTarefa);
     }
 
     @Override
     public void onTimeSet(TimePicker timePicker, int h, int min) {
-        String horaTarefa;
+        String horaTarefa = "";
         final Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, h);
         c.set(Calendar.MINUTE, min);
-        horaTarefa = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE);
+        if(c.get(Calendar.HOUR_OF_DAY) < 10)
+        {
+            horaTarefa += "0";
+        }
+        horaTarefa += c.get(Calendar.HOUR_OF_DAY) + ":" + ((c.get(Calendar.MINUTE) >= 10)?(c.get(Calendar.MINUTE)):("0" + c.get(Calendar.MINUTE)));
         hora.setText(horaTarefa);
     }
 }

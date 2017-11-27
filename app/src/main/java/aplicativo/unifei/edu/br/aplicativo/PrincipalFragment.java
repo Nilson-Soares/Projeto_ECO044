@@ -1,9 +1,11 @@
 package aplicativo.unifei.edu.br.aplicativo;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,7 @@ public class PrincipalFragment extends Fragment {
     private ArrayList<Tarefa> todas = new ArrayList<Tarefa>();
     private ArrayList<Tarefa> urgentes = new ArrayList<Tarefa>();
     private ArrayList<Tarefa> normais = new ArrayList<Tarefa>();
-    ListView itemsListView;
+    ListView itemsListView, lista;
     MyArrayAdapter adapter;
     Tarefa tarefa;
 
@@ -64,6 +66,22 @@ public class PrincipalFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.Urgentes));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.Normais));
 
+        //itemsListView = (ListView) view.findViewById(R.id.list_view_items);
+        //adapter = new MyArrayAdapter(getContext(), todas);
+        //itemsListView.setAdapter(adapter);
+
+        final BancoController crud = new BancoController(getContext());
+        final Cursor[] cursor = {crud.carregaDados()};
+
+        final String[] nomeCampos = new String[] {CriaBanco.NOME, CriaBanco.DESCRICAO};
+        final int[] idViews = new int[] {R.id.nome_tarefa, R.id.descricao_tarefa};
+
+        final SimpleCursorAdapter[] adaptador = {new SimpleCursorAdapter(getContext(),
+                R.layout.item_lista, cursor[0], nomeCampos, idViews, 0)};
+
+        lista = (ListView) view.findViewById(R.id.list_view_items);
+        lista.setAdapter(adaptador[0]);
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -71,11 +89,18 @@ public class PrincipalFragment extends Fragment {
                 int numTab = tab.getPosition();
                 switch (numTab){
                     case 0:
-                        itemsListView = (ListView) view.findViewById(R.id.list_view_items);
-                        adapter = new MyArrayAdapter(getContext(), todas);
-                        itemsListView.setAdapter(adapter);
+                        cursor[0] = crud.carregaDados();
+                        adaptador[0] = new SimpleCursorAdapter(getContext(),
+                                R.layout.item_lista, cursor[0],nomeCampos,idViews, 0);
+                        lista.setAdapter(adaptador[0]);
+                        //adapter = new MyArrayAdapter(getContext(), todas);
+                        //itemsListView.setAdapter(adapter);
                         break;
                     case 1:
+                        cursor[0] = crud.carregaDados();
+                        adaptador[0] = new SimpleCursorAdapter(getContext(),
+                                R.layout.item_lista, cursor[0],nomeCampos,idViews, 0);
+                        lista.setAdapter(adaptador[0]);
                         /*ArrayList<Tarefa> tarefas2 = new ArrayList<Tarefa>();
                         Tarefa tarefa2= new Tarefa("Nome1", "Descricao1");
                         tarefas2.add(tarefa2);
@@ -88,14 +113,16 @@ public class PrincipalFragment extends Fragment {
                         MyArrayAdapter adapter2 = new MyArrayAdapter(getContext(), tarefas2);
                         //configura o adapter para a ListView
                         itemsListView2.setAdapter(adapter2);*/
-                        itemsListView = (ListView) view.findViewById(R.id.list_view_items);
-                        adapter = new MyArrayAdapter(getContext(), urgentes);
-                        itemsListView.setAdapter(adapter);
+                        //adapter = new MyArrayAdapter(getContext(), urgentes);
+                        //itemsListView.setAdapter(adapter);
                         break;
                     case 2:
-                        itemsListView = (ListView) view.findViewById(R.id.list_view_items);
-                        adapter = new MyArrayAdapter(getContext(), normais);
-                        itemsListView.setAdapter(adapter);
+                        cursor[0] = crud.carregaDados();
+                        adaptador[0] = new SimpleCursorAdapter(getContext(),
+                                R.layout.item_lista, cursor[0],nomeCampos,idViews, 0);
+                        lista.setAdapter(adaptador[0]);
+                        //adapter = new MyArrayAdapter(getContext(), normais);
+                        //itemsListView.setAdapter(adapter);
                         break;
                 }
             }
@@ -103,7 +130,29 @@ public class PrincipalFragment extends Fragment {
             public void onTabUnselected(TabLayout.Tab tab) { }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) { }
+            public void onTabReselected(TabLayout.Tab tab) {
+                int numTab = tab.getPosition();
+                switch (numTab){
+                    case 0:
+                        cursor[0] = crud.carregaDados();
+                        adaptador[0] = new SimpleCursorAdapter(getContext(),
+                                R.layout.item_lista, cursor[0],nomeCampos,idViews, 0);
+                        lista.setAdapter(adaptador[0]);
+                        break;
+                    case 1:
+                        cursor[0] = crud.carregaDados();
+                        adaptador[0] = new SimpleCursorAdapter(getContext(),
+                                R.layout.item_lista, cursor[0],nomeCampos,idViews, 0);
+                        lista.setAdapter(adaptador[0]);
+                        break;
+                    case 2:
+                        cursor[0] = crud.carregaDados();
+                        adaptador[0] = new SimpleCursorAdapter(getContext(),
+                                R.layout.item_lista, cursor[0],nomeCampos,idViews, 0);
+                        lista.setAdapter(adaptador[0]);
+                        break;
+                }
+            }
         });
     }
 }
